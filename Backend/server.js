@@ -1,5 +1,6 @@
 const express = require('express');
 const crypto = require('crypto');
+const { Worker } = require('worker_threads');
 const app = express();
 const PORT = 3000;
 app.get('/fast', (req, res) => {
@@ -11,6 +12,7 @@ function heavyTask() {
 app.get('/slow', (req, res) => {
     const worker = new Worker('./worker.js');
     worker.on('message', () => {
+        console.log('Heavy task completed');
         res.send('Slow(non-blocking) ');
     });
 });

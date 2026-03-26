@@ -8,7 +8,7 @@ console.log("We are here 2")
 console.log("We are here 3")
 
 const Name = "me"
-Promise.resolve((me) => {
+Promise.then().resolve
     setTimeout(500)
   console.log("complete")
 });
