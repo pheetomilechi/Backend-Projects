@@ -9,7 +9,10 @@ function heavyTask() {
     crypto.pbkdf2Sync("password", "salt", 1000000, 64, "sha512");
 }
 app.get('/slow', (req, res) => {
-    const worker
+    const worker = new Worker('./worker.js');
+    worker.on('message', () => {
+        res.send('Slow(non-blocking) ');
+    });
 });
 
 app.listen(PORT, () => {
