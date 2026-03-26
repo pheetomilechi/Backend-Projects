@@ -8,10 +8,10 @@ app.get('/fast', (req, res) => {
 function heavyTask() {
     crypto.pbkdf2Sync("password", "salt", 1000000, 64, "sha512");
 }
-app.get('/slow',(req,res) => {
-    heavyTask();
-    res.send('Slow response');
+app.get('/slow', (req, res) => {
+    const worker
 });
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
